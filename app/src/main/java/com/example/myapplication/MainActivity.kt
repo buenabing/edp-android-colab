@@ -10,6 +10,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.*
@@ -58,7 +59,7 @@ fun BusinessCard() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFF5F5F5)), // Light background for the screen (Step 2)
+            .background(accentColor), // Gold background for the screen
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -100,6 +101,12 @@ fun BusinessCard() {
                 ContactRow(
                     icon = Icons.Default.Phone,
                     text = "09276684249",
+                    color = accentColor
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                ContactRow(
+                    icon = Icons.Default.Email,
+                    text = "bmabing62681@liceo.edu.ph",
                     color = accentColor
                 )
                 Spacer(modifier = Modifier.height(8.dp))

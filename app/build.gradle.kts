@@ -5,11 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.myapplication"
-    compileSdk {
-        version = release(37) {
-            minorApiLevel = 1
-        }
-    }
+    compileSdk = 37 // Ensure this matches your installed Android SDK
 
     defaultConfig {
         applicationId = "com.example.myapplication"
@@ -23,9 +19,7 @@ android {
 
     buildTypes {
         release {
-            optimization {
-                enable = false
-            }
+            isMinifyEnabled = false
         }
     }
     compileOptions {
@@ -38,6 +32,17 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.room.ktx)
+    // --- Step 1 Additions Start ---
+    val lifecycleVersion = "2.10.0"
+
+    // Lets you call viewModel() inside a Composable
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleVersion")
+
+    // Lets you use collectAsStateWithLifecycle()
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:$lifecycleVersion")
+    // --- Step 1 Additions End ---
+
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)
@@ -46,8 +51,8 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
-    
-    // Add extended icons if needed
+
+    // Extended icons
     implementation("androidx.compose.material:material-icons-extended")
 
     testImplementation(libs.junit)
